@@ -9,3 +9,5 @@ const appRoutes = Router();
 appRoutes.use('/gyms', gymsRouter);
 appRoutes.use('/instructors', instructorsRoutes);
 appRoutes.use('/students', studentsRoutes);
+
+export default appRoutes;

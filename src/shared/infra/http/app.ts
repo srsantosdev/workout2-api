@@ -10,12 +10,15 @@ import AppError from '@shared/errors/AppError';
 import '@shared/container';
 
 import '../typeorm';
+import routes from './routes';
 
 const app = express();
 const server = new Server(app);
 
 app.use(cors());
 app.use(express.json());
+
+app.use(routes);
 
 app.use(
   (error: Error, _request: Request, response: Response, _: NextFunction) => {
