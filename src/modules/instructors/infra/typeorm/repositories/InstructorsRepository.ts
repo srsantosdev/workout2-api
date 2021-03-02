@@ -15,12 +15,14 @@ export default class InstructorsRepository implements IInstructorsRepository {
     name,
     password,
     specialty,
+    gym_id,
   }: ICreateInstructorDTO): Promise<Instructor> {
     const instructor = this.ormRepository.create({
       email,
       name,
       password,
       specialty,
+      gym_id,
     });
 
     await this.ormRepository.save(instructor);

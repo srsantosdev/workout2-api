@@ -11,6 +11,7 @@ interface IRequest {
   specialty: string;
   email: string;
   password: string;
+  gym_id: string;
 }
 
 @injectable()
@@ -28,6 +29,7 @@ export default class CreateInstructorService {
     specialty,
     email,
     password,
+    gym_id,
   }: IRequest): Promise<Instructor> {
     const findByEmail = await this.instructorsRepository.findByEmail(email);
 
@@ -42,6 +44,7 @@ export default class CreateInstructorService {
       specialty,
       email,
       password: hashedPassword,
+      gym_id,
     });
 
     return createdInstructor;

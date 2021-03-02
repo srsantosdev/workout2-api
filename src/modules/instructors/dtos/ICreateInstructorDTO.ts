@@ -3,4 +3,5 @@ export default interface ICreateInstructorDTO {
   email: string;
   password: string;
   specialty: string;
+  gym_id: string;
 }
