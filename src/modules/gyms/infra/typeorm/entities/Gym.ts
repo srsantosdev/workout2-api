@@ -23,7 +23,7 @@ export default class Gym {
   @Column()
   document: string;
 
-  @ManyToMany(() => Student, student => student.gyms)
+  @ManyToMany(() => Student, { eager: true })
   @JoinTable({
     name: 'gyms_students',
     joinColumn: { name: 'gym_id' },
