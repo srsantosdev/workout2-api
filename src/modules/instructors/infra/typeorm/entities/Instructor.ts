@@ -1,7 +1,10 @@
+import Gym from '@modules/gyms/infra/typeorm/entities/Gym';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -22,6 +25,13 @@ export default class Instructor {
 
   @Column()
   password: string;
+
+  @Column()
+  gym_id: string;
+
+  @ManyToOne(() => Gym)
+  @JoinColumn({ name: 'gym_id' })
+  gym: Gym;
 
   @CreateDateColumn()
   created_at: Date;

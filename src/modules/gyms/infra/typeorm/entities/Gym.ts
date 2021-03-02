@@ -1,7 +1,10 @@
+import Student from '@modules/students/infra/typeorm/entities/Student';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinTable,
+  ManyToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -19,6 +22,14 @@ export default class Gym {
 
   @Column()
   document: string;
+
+  @ManyToMany(() => Student, student => student.gyms)
+  @JoinTable({
+    name: 'gyms_students',
+    joinColumn: { name: 'gym_id' },
+    inverseJoinColumn: { name: 'student_id' },
+  })
+  students: Student[];
 
   @CreateDateColumn()
   created_at: Date;
