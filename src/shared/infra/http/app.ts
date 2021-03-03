@@ -4,6 +4,7 @@ import 'dotenv/config';
 import { Server } from 'http';
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
+
 import cors from 'cors';
 
 import AppError from '@shared/errors/AppError';
@@ -11,9 +12,13 @@ import '@shared/container';
 
 import '../typeorm';
 import routes from './routes';
+import SocketConnection from '../socket/SocketConnection';
 
 const app = express();
 const server = new Server(app);
+
+const socketConnection = new SocketConnection(server);
+socketConnection.init();
 
 app.use(cors());
 app.use(express.json());
